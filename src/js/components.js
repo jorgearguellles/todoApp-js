@@ -2,10 +2,11 @@ import { Todo } from "../classes";
 import { todoList } from "../index";
 
 // HTML Referees
-const divTodoList = document.querySelector('.todo-list');
-const txtInput = document.querySelector('.new-todo');
+const divTodoList            = document.querySelector('.todo-list');
+const txtInput               = document.querySelector('.new-todo');
 const btnDeletedAllCompleted = document.querySelector('.clear-completed');
-
+const ulFilters              = document.querySelector('.filters');
+const anchorFilters          = document.querySelectorAll('.filtro');
 
 // createToDoHTML
 export const createTodoHTML = ( todo ) => {
@@ -74,4 +75,29 @@ btnDeletedAllCompleted.addEventListener('click', ()=>{
     }
 });
 
-// 4. 
+// 4. Filters
+
+ulFilters.addEventListener('click', (event)=>{
+    
+    const filter = event.target.text; //Todos, Pendientes, Completados, Undefined
+
+    if(!filter){return;};
+
+    anchorFilters.forEach( elem => elem.classList.remove('selected') );
+    event.target.classList.add('selected');
+
+    for(const element of divTodoList.children){
+
+        element.classList.remove('hidden');
+        const completed = element.classList.contains('completed')
+
+        switch (filter) {
+            case 'Pendientes':
+                (completed) && (element.classList.add('hidden'));    
+            break;
+            case 'Completados':
+                (!completed) && (element.classList.add('hidden'));    
+            break;
+        }
+    }
+})

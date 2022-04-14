@@ -1,12 +1,9 @@
 import './styles.css';
-import { Todo,TodoList } from './classes';
-import { createTodoHTML } from './js/componentes';
+
+import { TodoList } from './classes';
+import { createTodoHTML } from './js/components';
 
 export const todoList = new TodoList();
 
-const todo = new Todo('Learn OOP on TypeScript')
-
-todoList.newTodo(todo);
-createTodoHTML(todo)
-
-console.log(todoList);
+// Show TOdos saved on LocalStorage
+todoList.todos.forEach(createTodoHTML);

@@ -2,7 +2,7 @@ import './styles.css';
 import { Todo,TodoList } from './classes';
 import { createTodoHTML } from './js/componentes';
 
-const todoList = new TodoList();
+export const todoList = new TodoList();
 
 const todo = new Todo('Learn OOP on TypeScript')
 

@@ -1,8 +1,12 @@
+import { Todo } from "../classes";
+import { todoList } from "../index";
+
 // HTML Referees
 const divTodoList = document.querySelector('.todo-list');
+const txtInput = document.querySelector('.new-todo');
 
-
-export const createTodoHTML = (todo) => {
+// createToDoHTML
+export const createTodoHTML = ( todo ) => {
     const {todoTitle, completed, id} = todo;
 
     const htmlTodo = `
@@ -24,3 +28,18 @@ export const createTodoHTML = (todo) => {
 
     return div.firstElementChild;
 }
+
+// Events ===================================>
+
+// 1. AddNewTodo:
+txtInput.addEventListener('keyup', ( event )=>{
+    // console.log(event) // Event will show what key was pressed by User
+    if( event.keyCode === 13 && txtInput.value.length > 1 ){
+
+        const newTodo = new Todo(txtInput.value)
+        todoList.newTodo(newTodo);
+        createTodoHTML(newTodo)
+        txtInput.value = '';
+    }
+  }
+);

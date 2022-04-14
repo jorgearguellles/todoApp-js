@@ -43,3 +43,17 @@ txtInput.addEventListener('keyup', ( event )=>{
     }
   }
 );
+
+// 2. Click completedToggle
+divTodoList.addEventListener('click', (event)=>{
+
+    const elementName = event.target.localName; // input, label, button
+    const elementTodo = event.target.parentElement.parentElement; // li tag
+    const todoId = elementTodo.getAttribute('data-id')
+
+    if( elementName.includes('input')){
+        todoList.deleteAllCompletedTodos(todoId);
+        elementTodo.classList.toggle('completed');
+    }
+
+})

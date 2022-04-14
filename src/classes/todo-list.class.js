@@ -3,30 +3,21 @@
 export class TodoList{
 
   constructor(){
-    this.todo = [];
+    this.todos = [];
   }
 
   newTodo(todo){
-    this.todo.push(todo);
+    this.todos.push(todo);
   }
 
   deleteTodo(id){
-    
+    this.todos = this.todos.filter( todo => todo.id != id );
   }
 
   completedToggleTodo(id){
-    const numberId = parseInt(id);
-
-    for( let todo of this.todos){
-      if( todo.id === numberId){
-        todo.completedToggleTodo = !todo.completedToggleTodo;
-        break;
-      }
-    }
-
-    // Short way to find Element by Id:
-    // const findElementById = this.todo.find(todo => todo.id === numberId);
-    // findElementById.completedToggleTodo = !todo.completedToggleTodo;
+    const findElementById = this.todos.find(todo => todo.id == id);
+    console.log(findElementById)
+    findElementById.completedToggleTodo = !findElementById.completedToggleTodo;
   }
 
   deleteAllCompletedTodos(){

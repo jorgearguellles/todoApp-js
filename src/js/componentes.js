@@ -51,9 +51,11 @@ divTodoList.addEventListener('click', (event)=>{
     const elementTodo = event.target.parentElement.parentElement; // li tag
     const todoId = elementTodo.getAttribute('data-id')
 
-    if( elementName.includes('input')){
-        todoList.deleteAllCompletedTodos(todoId);
-        elementTodo.classList.toggle('completed');
+    if( elementName.includes('input') ){
+        todoList.completedToggleTodo(todoId);
+        elementTodo.classList.toggle('completed'); // toggle to underline todoTitle
+    } else if ( elementName.includes('button') ){
+        todoList.deleteTodo(todoId); // logic applied
+        divTodoList.removeChild(elementTodo); // Delete on HTML
     }
-
 })

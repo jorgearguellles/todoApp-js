@@ -1,13 +1,12 @@
 import './styles.css';
 import { Todo,TodoList } from './classes';
+import { createTodoHTML } from './js/componentes';
 
-const todo = new Todo('Cooking chicken')
-const todo1 = new Todo('Wader chicken')
-console.log(todo)
+export const todoList = new TodoList();
 
+const todo = new Todo('Learn OOP on TypeScript')
 
-const todoList = new TodoList()
-console.log(todoList);
 todoList.newTodo(todo);
-todoList.newTodo(todo1);
+createTodoHTML(todo)
+
 console.log(todoList);

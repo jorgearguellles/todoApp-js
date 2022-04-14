@@ -1,5 +1,18 @@
-# Webpack configurado
+# Todo App - Vanilla JavaScript
 
-Para usar este repositorio, deberán ejecutar el comando de ```npm install```
+Section topics:
 
-Pero esto lo veremos en la siguiente sección
+- Webpack
+- Classes
+- LocalStorage and SessionStorage
+- Imports
+- Modules
+- Todos logic to handle
+- Deploy by Github Pages
+- Arrays
+
+# Run project
+
+To use this repository, you will need to run the `npm install` command.
+
+#

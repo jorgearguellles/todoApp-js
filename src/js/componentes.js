@@ -4,6 +4,8 @@ import { todoList } from "../index";
 // HTML Referees
 const divTodoList = document.querySelector('.todo-list');
 const txtInput = document.querySelector('.new-todo');
+const btnDeletedAllCompleted = document.querySelector('.clear-completed');
+
 
 // createToDoHTML
 export const createTodoHTML = ( todo ) => {
@@ -51,9 +53,25 @@ divTodoList.addEventListener('click', (event)=>{
     const elementTodo = event.target.parentElement.parentElement; // li tag
     const todoId = elementTodo.getAttribute('data-id')
 
-    if( elementName.includes('input')){
-        todoList.deleteAllCompletedTodos(todoId);
-        elementTodo.classList.toggle('completed');
+    if( elementName.includes('input') ){
+        todoList.completedToggleTodo(todoId);
+        elementTodo.classList.toggle('completed'); // toggle to underline todoTitle
+    } else if ( elementName.includes('button') ){
+        todoList.deleteTodo(todoId); // logic applied
+        divTodoList.removeChild(elementTodo); // Delete on HTML
     }
-
 })
+
+// 3. Delete all completed todos
+btnDeletedAllCompleted.addEventListener('click', ()=>{
+    todoList.deleteAllCompletedTodos();
+    for( let i = divTodoList.children.length-1; i >= 0; i--){
+        const element = divTodoList.children[i];
+
+        if( element.classList.contains('completed') ){
+            divTodoList.removeChild(element);
+        }
+    }
+});
+
+// 4. 
